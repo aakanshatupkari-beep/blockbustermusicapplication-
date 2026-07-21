@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Music Player</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="background-image">
+        <img src="assets/images/your-photo.jpg" alt="Music background">
+    </div>
+    
+    <div id="auth-container" class="login-container">
+        <div id="login-form">
+            <h1>Login to Music App</h1>
+            <input type="text" id="login-email" placeholder="Enter your email..." />
+            <input type="password" id="login-password" placeholder="Enter your password..." />
+            <button onclick="loginUser()">Login</button>
+            <p>
+                Not a member? 
+                <a href="#" onclick="showSignup()">Sign Up</a>
+            </p>
+        </div>
+
+        <div id="signup-form" style="display: none;">
+            <h1>Sign Up</h1>
+            <input type="text" id="signup-username" placeholder="Enter your name..." />
+            <input type="email" id="signup-email" placeholder="Enter your email..." />
+            <input type="password" id="signup-password" placeholder="Create a password..." />
+            <button onclick="signupUser()">Sign Up</button>
+            <p>
+                Already a user? 
+                <a href="#" onclick="showLogin()">Login</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="welcome-screen" class="welcome-container" style="display: none;">
+        <div class="vinyl"></div>
+        <h1 class="welcome-text">🎵 Welcome, <span id="welcome-username"></span> to <span>Blockbuster Music</span> 🔥</h1>
+    </div>
+
+    <div id="main-app" style="display: none;">
+        <nav>
+            <div class="logo">Blockbuster Music 🔥</div>
+            <ul>
+                <li onclick="showAllSongs()">All Songs</li>
+                <li onclick="showSongsByCategory('trending')">Trending</li>
+                <li onclick="showSongsByCategory('sad')">Sad Songs</li>
+                <li onclick="showSongsByCategory('marathi')">Marathi Songs</li>
+                <li onclick="showFavorites()">Favorites</li>
+                <li onclick="showProfile()">Settings</li>
+            </ul>
+            <input type="text" placeholder="Search..." oninput="searchSongs(this.value)">
+            <button id="theme-toggle-btn"><i class="fas fa-moon"></i></button>
+        </nav>
+        <div id="music-gallery" class="music-gallery"></div>
+    </div>
+
+    <div id="profile-page" class="profile-container" style="display: none;">
+        <h2>User Profile</h2>
+        <div class="profile-info">
+            <label for="profile-username">Your Name:</label>
+            <input type="text" id="profile-username" />
+            <button onclick="saveProfileName()">Save Name</button>
+        </div>
+        <button onclick="showAllSongs()">Go Back</button>
+    </div>
+
+    <div id="player-bar" class="player-bar" style="display:none;">
+        <div class="player-details">
+            <img id="player-img" src="" alt="Album Art" />
+            <div class="player-info">
+                <h5 id="player-title"></h5>
+                <p id="player-artist"></p>
+            </div>
+        </div>
+        <div class="player-controls">
+            <div id="visualizer">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            
+            <input type="range" id="progress-bar" value="0" />
+            <div class="time-display">
+                <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
+            </div>
+            <div class="main-controls">
+                <button id="prev-btn"><i class="fas fa-backward"></i></button>
+                <button id="main-play-btn"><i class="fas fa-play"></i></button>
+                <button id="next-btn"><i class="fas fa-forward"></i></button>
+            </div>
+        </div>
+        <div class="volume-control">
+            <i class="fas fa-volume-up"></i>
+            <input type="range" id="volume-slider" min="0" max="100" value="50" />
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
